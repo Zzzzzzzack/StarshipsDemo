@@ -17,7 +17,7 @@
 		1475114527DB166800986498 /* StarshipsDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475114427DB166800986498 /* StarshipsDemoUITestsLaunchTests.swift */; };
 		1475115327DB19E200986498 /* ZKNetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115227DB19E200986498 /* ZKNetworkingAPI.swift */; };
 		1475115427DB19E200986498 /* ZKNetworkingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115227DB19E200986498 /* ZKNetworkingAPI.swift */; };
-		1475115627DB203300986498 /* ZKNetworkingAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115527DB203300986498 /* ZKNetworkingAPITest.swift */; };
+		1475115627DB203300986498 /* ZKNetworkingAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115527DB203300986498 /* ZKNetworkingAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 		1475114227DB166800986498 /* StarshipsDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsDemoUITests.swift; sourceTree = "<group>"; };
 		1475114427DB166800986498 /* StarshipsDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipsDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1475115227DB19E200986498 /* ZKNetworkingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNetworkingAPI.swift; sourceTree = "<group>"; };
-		1475115527DB203300986498 /* ZKNetworkingAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNetworkingAPITest.swift; sourceTree = "<group>"; };
+		1475115527DB203300986498 /* ZKNetworkingAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNetworkingAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				1475113827DB166800986498 /* StarshipsDemoTests.swift */,
-				1475115527DB203300986498 /* ZKNetworkingAPITest.swift */,
+				1475115527DB203300986498 /* ZKNetworkingAPITests.swift */,
 			);
 			path = StarshipsDemoTests;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 			files = (
 				1475113927DB166800986498 /* StarshipsDemoTests.swift in Sources */,
 				1475115427DB19E200986498 /* ZKNetworkingAPI.swift in Sources */,
-				1475115627DB203300986498 /* ZKNetworkingAPITest.swift in Sources */,
+				1475115627DB203300986498 /* ZKNetworkingAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,5 @@
 //
-//  ZKNetworkingAPITest.swift
+//  ZKNetworkingAPITests.swift
 //  StarshipsDemoTests
 //
 //  Created by Zack on 11/3/22.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-class ZKNetworkingAPITest: XCTestCase {
+class ZKNetworkingAPITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
