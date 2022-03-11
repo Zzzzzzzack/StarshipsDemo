@@ -18,11 +18,11 @@ class ZKNetworkingAPITests: XCTestCase {
     }
 
     func testStarshipsAPIEnums() throws {
-        let starshipsListAPI = ZKNetworkAPI.starships(.list)
+        let starshipsListAPI = ZKNetworkingAPI.starships(.list)
         XCTAssertEqual(starshipsListAPI.urlString, "https://swapi.dev/api/starships/")
         XCTAssertEqual(starshipsListAPI.method, .get)
         
-        let starshipDetailsAPI =  ZKNetworkAPI.starships(.details("2"))
+        let starshipDetailsAPI =  ZKNetworkingAPI.starships(.details("2"))
         XCTAssertEqual(starshipDetailsAPI.urlString, "https://swapi.dev/api/starships/2")
         XCTAssertEqual(starshipDetailsAPI.method, .get)
     }

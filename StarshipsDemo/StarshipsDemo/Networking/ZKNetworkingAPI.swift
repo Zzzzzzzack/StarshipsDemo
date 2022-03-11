@@ -15,7 +15,7 @@ enum ZKHttpMethod: String {
 }
 
 /// A type that can be used to get the API's url string and its related http method
-protocol ZKNetworkAPIProtocol {
+protocol ZKNetworkingAPIProtocol {
     // The full API url string, e.g. https://swapi.dev/api/starships/2",
     var urlString: String { get }
     
@@ -23,18 +23,18 @@ protocol ZKNetworkAPIProtocol {
     var method: ZKHttpMethod { get }
 }
    
-// A enum used to get the Network API info
-enum ZKNetworkAPI {
+// A enum used to get the Networking API info
+enum ZKNetworkingAPI {
     // Define the API categories
-    case starships(_ api: ZKNetworkAPI.Category.Starships)
+    case starships(_ api: ZKNetworkingAPI.Category.Starships)
     
     // The category used for grouped the APIs
-    // Use subclass here so it can only been used by this formate: ZKNetworkAPI.Category
+    // Use subclass here so it can only been used by this formate: ZKNetworkingAPI.Category
     class Category {}
 }
 
-// Implement the ZKNetworkAPIProtocol for all the APIs
-extension ZKNetworkAPI: ZKNetworkAPIProtocol {
+// Implement the ZKNetworkingAPIProtocol for all the APIs
+extension ZKNetworkingAPI: ZKNetworkingAPIProtocol {
     var urlString: String {
         switch self {
         case .starships(let api):
@@ -51,7 +51,7 @@ extension ZKNetworkAPI: ZKNetworkAPIProtocol {
 }
 
 // Define the APIs under the starship category
-extension ZKNetworkAPI.Category {
+extension ZKNetworkingAPI.Category {
     enum Starships {
         case list
         case details(_ starshipID: String)
@@ -59,7 +59,7 @@ extension ZKNetworkAPI.Category {
 }
 
 // Define the category names, API names and http methods for Starships APIs
-extension ZKNetworkAPI.Category.Starships {
+extension ZKNetworkingAPI.Category.Starships {
     // API category name
     var categoryName: String {
         return "starships"

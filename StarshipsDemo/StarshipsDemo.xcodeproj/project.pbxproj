@@ -21,6 +21,12 @@
 		1475115927DB267B00986498 /* ZKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115827DB267B00986498 /* ZKError.swift */; };
 		1475115A27DB267B00986498 /* ZKError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115827DB267B00986498 /* ZKError.swift */; };
 		1475115C27DB283200986498 /* ZKErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115B27DB283200986498 /* ZKErrorTests.swift */; };
+		1475115E27DB2AB100986498 /* ZKNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115D27DB2AB100986498 /* ZKNetworking.swift */; };
+		1475115F27DB2AB100986498 /* ZKNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475115D27DB2AB100986498 /* ZKNetworking.swift */; };
+		1475116327DB2BB700986498 /* ZKRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475116227DB2BB700986498 /* ZKRequestProtocol.swift */; };
+		1475116427DB2BB700986498 /* ZKRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475116227DB2BB700986498 /* ZKRequestProtocol.swift */; };
+		1475116627DB2BC600986498 /* ZKResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475116527DB2BC600986498 /* ZKResponseProtocol.swift */; };
+		1475116727DB2BC600986498 /* ZKResponseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475116527DB2BC600986498 /* ZKResponseProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,9 @@
 		1475115527DB203300986498 /* ZKNetworkingAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNetworkingAPITests.swift; sourceTree = "<group>"; };
 		1475115827DB267B00986498 /* ZKError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKError.swift; sourceTree = "<group>"; };
 		1475115B27DB283200986498 /* ZKErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKErrorTests.swift; sourceTree = "<group>"; };
+		1475115D27DB2AB100986498 /* ZKNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKNetworking.swift; sourceTree = "<group>"; };
+		1475116227DB2BB700986498 /* ZKRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKRequestProtocol.swift; sourceTree = "<group>"; };
+		1475116527DB2BC600986498 /* ZKResponseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKResponseProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +150,10 @@
 		1475115127DB19AF00986498 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				1475116127DB2B9C00986498 /* Response */,
+				1475116027DB2B9000986498 /* Request */,
 				1475115227DB19E200986498 /* ZKNetworkingAPI.swift */,
+				1475115D27DB2AB100986498 /* ZKNetworking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -152,6 +164,22 @@
 				1475115827DB267B00986498 /* ZKError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		1475116027DB2B9000986498 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				1475116227DB2BB700986498 /* ZKRequestProtocol.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		1475116127DB2B9C00986498 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				1475116527DB2BC600986498 /* ZKResponseProtocol.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +314,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1475115927DB267B00986498 /* ZKError.swift in Sources */,
+				1475116627DB2BC600986498 /* ZKResponseProtocol.swift in Sources */,
 				1475112627DB166700986498 /* ZKStarshipsViewController.swift in Sources */,
+				1475116327DB2BB700986498 /* ZKRequestProtocol.swift in Sources */,
+				1475115E27DB2AB100986498 /* ZKNetworking.swift in Sources */,
 				1475112227DB166700986498 /* AppDelegate.swift in Sources */,
 				1475112427DB166700986498 /* SceneDelegate.swift in Sources */,
 				1475115327DB19E200986498 /* ZKNetworkingAPI.swift in Sources */,
@@ -298,7 +329,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1475115C27DB283200986498 /* ZKErrorTests.swift in Sources */,
+				1475116727DB2BC600986498 /* ZKResponseProtocol.swift in Sources */,
 				1475113927DB166800986498 /* StarshipsDemoTests.swift in Sources */,
+				1475116427DB2BB700986498 /* ZKRequestProtocol.swift in Sources */,
+				1475115F27DB2AB100986498 /* ZKNetworking.swift in Sources */,
 				1475115427DB19E200986498 /* ZKNetworkingAPI.swift in Sources */,
 				1475115627DB203300986498 /* ZKNetworkingAPITests.swift in Sources */,
 				1475115A27DB267B00986498 /* ZKError.swift in Sources */,
