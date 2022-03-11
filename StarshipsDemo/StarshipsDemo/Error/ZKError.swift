@@ -13,14 +13,14 @@ protocol ZKError: LocalizedError {
 }
 
 /// A list of possible network related errors
-enum ZKNetworkError {
+enum ZKNetworkingError {
     case invalidURL
     case serverError
     case custom(message: String)
 }
 
 /// Implement the ZKError protocol
-extension ZKNetworkError: ZKError {
+extension ZKNetworkingError: ZKError {
     /// A localized message describing what error occurred.
     var errorDescription: String? {
         switch self {

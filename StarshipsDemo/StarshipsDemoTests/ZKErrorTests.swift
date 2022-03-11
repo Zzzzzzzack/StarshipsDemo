@@ -17,15 +17,15 @@ class ZKErrorTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testErrorDescriptions() throws {
-        let invalidURLError = ZKNetworkError.invalidURL
+    func testNetworkingErrorDescriptions() throws {
+        let invalidURLError = ZKNetworkingError.invalidURL
         XCTAssertEqual(invalidURLError.errorDescription, "Invalid URL")
 
-        let serverError = ZKNetworkError.serverError
+        let serverError = ZKNetworkingError.serverError
         XCTAssertEqual(serverError.errorDescription, "Server Error")
 
         let customMessage = "Custom Message Error"
-        let customError = ZKNetworkError.custom(message: customMessage)
+        let customError = ZKNetworkingError.custom(message: customMessage)
         XCTAssertEqual(customError.errorDescription, customMessage)
     }
 
