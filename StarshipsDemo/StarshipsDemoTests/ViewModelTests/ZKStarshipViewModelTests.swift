@@ -18,6 +18,7 @@ class ZKStarshipViewModelTests: XCTestCase {
     }
     
     func testUpdateViewModel() throws {
+        // Setup the model by JSON file
         guard let starship1 = try? ZKJSONUtil.shared.loadDataFromJSONFile(ZKStarship.self, fileName: "Starship1") else {
             XCTAssert(true)
             return
@@ -26,6 +27,8 @@ class ZKStarshipViewModelTests: XCTestCase {
         // Test view model properties by starship1
         let viewModel = ZKStarshipViewModel()
         viewModel.update(starship1)
+        
+        // Validate all the model properties
         XCTAssertEqual(viewModel.name, "CR90 corvette")
         XCTAssertEqual(viewModel.model,  "Model: CR90 corvette")
         XCTAssertEqual(viewModel.manufacturer,  "Manufacturer: Corellian Engineering Corporation")
@@ -44,12 +47,6 @@ class ZKStarshipViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.created, "2014-12-10T14:20:33.369000Z")
         XCTAssertEqual(viewModel.edited, "2014-12-20T21:23:49.867000Z")
         XCTAssertEqual(viewModel.url, "https://swapi.dev/api/starships/2/")
-        
-        viewModel.isFavourite = nil
-        viewModel.toggleFavourite()
-        XCTAssertEqual(viewModel.starship?.isFavourite, true)
-        viewModel.toggleFavourite()
-        XCTAssertEqual(viewModel.starship?.isFavourite, false)
 
         // Test empty properties by starship2
         guard let starship2 = try? ZKJSONUtil.shared.loadDataFromJSONFile(ZKStarship.self, fileName: "Starship2") else {
@@ -60,6 +57,25 @@ class ZKStarshipViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.name, "Star Destroyer")
         XCTAssertNil(viewModel.model)
         XCTAssertNil(viewModel.manufacturer)
+    }
+    
+    //
+    func testToggleFavourite() throws {
+        // Setup the model by JSON file
+        guard let starship = try? ZKJSONUtil.shared.loadDataFromJSONFile(ZKStarship.self, fileName: "Starship1") else {
+            XCTAssert(true)
+            return
+        }
+        
+        // Test toggle favourite
+        let viewModel = ZKStarshipViewModel()
+        viewModel.update(starship)
+        XCTAssertEqual(viewModel.starship?.isFavourite, false)
+        viewModel.toggleFavourite()
+        XCTAssertEqual(viewModel.starship?.isFavourite, true)
+        viewModel.isFavourite = nil
+        viewModel.toggleFavourite()
+        XCTAssertEqual(viewModel.starship?.isFavourite, true)
     }
 
     func testExample() throws {

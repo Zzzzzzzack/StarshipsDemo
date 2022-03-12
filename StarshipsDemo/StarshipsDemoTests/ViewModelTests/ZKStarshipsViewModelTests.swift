@@ -28,7 +28,7 @@ class ZKStarshipsViewModelTests: XCTestCase {
         viewModel.$reloadData.sink(receiveValue: { [unowned viewModel] _ in
             // Check the response data
             XCTAssertEqual(viewModel.starships?.count, 10)
-            var firstStarship = viewModel.starships?.first
+            let firstStarship = viewModel.starships?.first
             XCTAssertEqual(firstStarship?.name, "CR90 corvette")
             XCTAssertEqual(firstStarship?.model,  "CR90 corvette")
             XCTAssertEqual(firstStarship?.manufacturer,  "Corellian Engineering Corporation")
@@ -49,15 +49,24 @@ class ZKStarshipsViewModelTests: XCTestCase {
             XCTAssertEqual(firstStarship?.edited, "2014-12-20T21:23:49.867000Z")
             XCTAssertEqual(firstStarship?.url, "https://swapi.dev/api/starships/2/")
             
-            firstStarship?.isFavourite = true
-            viewModel.toggleFavourite(firstStarship)
-            XCTAssertEqual(viewModel.starships?.first?.isFavourite, true)
-            viewModel.toggleFavourite(nil)
-
             expectation.fulfill()
         }).store(in: &self.subscriptions)
         
         self.waitForExpectations(timeout: 10.0, handler: nil)
+    }
+    
+    func testToggleFavourite() throws {
+        let viewModel = ZKStarshipsViewModel()
+        guard let starship = try? ZKJSONUtil.shared.loadDataFromJSONFile(ZKStarship.self, fileName: "Starship1") else {
+            XCTAssert(true)
+            return
+        }
+        viewModel.starships = [starship]
+        XCTAssertEqual(viewModel.starships?.first?.isFavourite, false)
+        viewModel.toggleFavourite(starship)
+        XCTAssertEqual(viewModel.starships?.first?.isFavourite, true)
+        viewModel.toggleFavourite(nil)
+        XCTAssertEqual(viewModel.starships?.first?.isFavourite, true)
     }
 
     func testPerformanceExample() throws {

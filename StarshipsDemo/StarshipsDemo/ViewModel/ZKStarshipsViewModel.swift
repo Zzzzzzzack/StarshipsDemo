@@ -32,7 +32,7 @@ class ZKStarshipsViewModel {
         self.networking.send(DispatchQueue.global(), request: request) { [unowned self] in
             self.starships = $0?.data?.starships
             self.reloadData = true
-            self.errorMessage = $1?.errorDescription
+            self.errorMessage = $1?.errorDescription 
             
             if let starships = self.starships {
                 // Save the list to DB

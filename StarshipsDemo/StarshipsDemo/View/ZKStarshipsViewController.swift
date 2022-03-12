@@ -49,8 +49,25 @@ class ZKStarshipsViewController: UIViewController {
             self.tableView.reloadData()
         }.store(in: &self.subscriptions)
         
+        // Handle received error message
+        self.viewModel.$errorMessage
+            .receive(on: DispatchQueue.main)
+            .sink { [unowned self] in
+                guard let message = $0, !message.isEmpty else {
+                    return
+                }
+                self.popupErrorMessage(message)
+            }.store(in: &self.subscriptions)
+        
         // Trigger view model to get the starship
         self.viewModel.getStarships()
+    }
+    
+    // Pop up an alert to display the error message
+    func popupErrorMessage(_ message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
