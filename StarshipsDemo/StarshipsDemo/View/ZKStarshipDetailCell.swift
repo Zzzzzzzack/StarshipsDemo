@@ -78,12 +78,12 @@ class ZKStarshipDetailCell: UITableViewCell {
         ])
         
         // Bind all the related properties with UI
-        self.viewModel.$title.sink {
+        self.viewModel.$title.sink { [unowned self] in
             // Update title text
             self.title.text = $0
         }.store(in: &self.subscriptions)
         
-        self.viewModel.$detail.sink {
+        self.viewModel.$detail.sink { [unowned self] in
             // Update detail text
             self.detail.text = $0
         }.store(in: &self.subscriptions)

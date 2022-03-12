@@ -27,7 +27,7 @@ struct ZKStarship: Decodable {
     let edited: String?
     let url: String?
     
-    let isFavorite: Bool = false
+    var isFavourite: Bool = false
     
     enum CodingKeys: String, CodingKey, CaseIterable {
         case name, model, manufacturer, length, crew, passengers, consumables, MGLT, pilots, films, created, edited, url

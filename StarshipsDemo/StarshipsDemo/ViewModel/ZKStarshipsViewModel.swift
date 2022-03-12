@@ -12,7 +12,9 @@ class ZKStarshipsViewModel {
     // A Networking type used to get starships
     var networking: ZKNetworkingProtocol
     
-    @Published var starships: [ZKStarship]?
+    var starships: [ZKStarship]?
+    
+    @Published var reloadData: Bool?
     @Published var errorMessage: String?
     
     /// Initializer
@@ -29,7 +31,21 @@ class ZKStarshipsViewModel {
         let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 1))
         self.networking.send(DispatchQueue.global(), request: request) { [unowned self] in
             self.starships = $0?.data?.starships
+            self.reloadData = true
             self.errorMessage = $1?.errorDescription
+        }
+    }
+    
+    /// Toggle favourite for existing starship
+    func toggleFavourite(_ starship: ZKStarship?) {
+        // Find the existing starship by matched name
+        if let starship = starship, let index = self.starships?.firstIndex(where: {
+            return $0.name == starship.name
+        }) {
+            let existingStarship = self.starships?[index]
+            // Toggle the favourite status
+            let isFavourite = !(existingStarship?.isFavourite ?? false)
+            self.starships?[index].isFavourite = isFavourite
         }
     }
 }

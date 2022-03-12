@@ -10,6 +10,8 @@ import Combine
 
 class ZKStarshipViewModel {
     var starship: ZKStarship?
+    var starshipsViewModel: ZKStarshipsViewModel?
+    
     @Published var displayDetailTypes = ZKStarshipViewModel.DetailType.allCases
 
     @Published var name: String?
@@ -30,7 +32,7 @@ class ZKStarshipViewModel {
     @Published var created: String?
     @Published var edited: String?
     @Published var url: String?
-    @Published var isFavorite: Bool?
+    @Published var isFavourite: Bool?
     
     /// Update the view model by starship
     func update(_ starship: ZKStarship) {
@@ -65,7 +67,19 @@ class ZKStarshipViewModel {
         self.created = starship.created
         self.edited = starship.edited
         self.url = starship.url
-        self.isFavorite = starship.isFavorite
+        self.isFavourite = starship.isFavourite
+    }
+    
+    func toggleFavourite() {
+        if let isFavourite = self.isFavourite {
+            self.isFavourite = !isFavourite
+            self.starship?.isFavourite = isFavourite
+        } else {
+            self.isFavourite = true
+            self.starship?.isFavourite = true
+        }
+        
+        self.starshipsViewModel?.toggleFavourite(self.starship)
     }
 }
 

@@ -42,7 +42,7 @@ class ZKStarshipsViewController: UIViewController {
         ])
         
         // Bind the starships so table view will reload once the starships been updated
-        self.viewModel.$starships
+        self.viewModel.$reloadData
             .receive(on: DispatchQueue.main)
             .sink { [unowned self] _ in
             // Reload once the starships been updated
@@ -67,6 +67,7 @@ extension ZKStarshipsViewController: UITableViewDataSource {
             let cell = cell as? ZKStarshipCell {
             /// Update cell's view mode
             cell.viewModel.update(starships[indexPath.row])
+            cell.viewModel.starshipsViewModel = self.viewModel
         }
 
         return cell
@@ -82,9 +83,10 @@ extension ZKStarshipsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = self.tableView.cellForRow(at: indexPath) as? ZKStarshipCell
         let detailsPage = ZKStarshipDetailsViewController()
-        // `isFavorite` can be changed from details page
-        // So use the same view model so the changes can be observed by cell
+        // `isFavourite` can be changed from details page
+        // Use the same view model so the changes can be observed by cell
         detailsPage.viewModel = cell?.viewModel
+        tableView.deselectRow(at: indexPath, animated: true)
         self.navigationController?.pushViewController(detailsPage, animated: true)
     }
 }
