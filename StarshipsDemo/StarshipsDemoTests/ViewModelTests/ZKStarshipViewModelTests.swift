@@ -45,6 +45,12 @@ class ZKStarshipViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.edited, "2014-12-20T21:23:49.867000Z")
         XCTAssertEqual(viewModel.url, "https://swapi.dev/api/starships/2/")
         
+        viewModel.isFavourite = true
+        viewModel.toggleFavourite()
+        
+        viewModel.isFavourite = nil
+        viewModel.toggleFavourite()
+        
         // Test empty properties by starship2
         guard let starship2 = try? ZKJSONUtil.shared.loadDataFromJSONFile(ZKStarship.self, fileName: "Starship2") else {
             XCTAssert(true)

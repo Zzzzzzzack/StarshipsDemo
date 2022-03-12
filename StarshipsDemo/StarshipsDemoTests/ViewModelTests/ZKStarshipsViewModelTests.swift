@@ -25,10 +25,10 @@ class ZKStarshipsViewModelTests: XCTestCase {
         networking.responseFileName = "GetStarshipsResponse"
         let viewModel = ZKStarshipsViewModel(networking)
         viewModel.getStarships()
-        viewModel.$starships.sink(receiveValue: {
+        viewModel.$reloadData.sink(receiveValue: { [unowned viewModel] _ in
             // Check the response data
-            XCTAssertEqual($0?.count, 10)
-            let firstStarship = $0?.first
+            XCTAssertEqual(viewModel.starships?.count, 10)
+            var firstStarship = viewModel.starships?.first
             XCTAssertEqual(firstStarship?.name, "CR90 corvette")
             XCTAssertEqual(firstStarship?.model,  "CR90 corvette")
             XCTAssertEqual(firstStarship?.manufacturer,  "Corellian Engineering Corporation")
@@ -48,6 +48,11 @@ class ZKStarshipsViewModelTests: XCTestCase {
             XCTAssertEqual(firstStarship?.created, "2014-12-10T14:20:33.369000Z")
             XCTAssertEqual(firstStarship?.edited, "2014-12-20T21:23:49.867000Z")
             XCTAssertEqual(firstStarship?.url, "https://swapi.dev/api/starships/2/")
+            
+            firstStarship?.isFavourite = true
+            viewModel.toggleFavourite(firstStarship)
+            viewModel.toggleFavourite(nil)
+
             expectation.fulfill()
         }).store(in: &self.subscriptions)
         

@@ -53,6 +53,8 @@
 		147511A027DC67AE00986498 /* ZKJSONUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475119F27DC67AE00986498 /* ZKJSONUtil.swift */; };
 		147511A327DCDCF100986498 /* ZKPersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147511A227DCDCF100986498 /* ZKPersistenceProtocol.swift */; };
 		147511A527DCDF3A00986498 /* ZKStarshipsDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147511A427DCDF3A00986498 /* ZKStarshipsDBHelper.swift */; };
+		147511A727DCEB8E00986498 /* ZKStarshipsDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147511A427DCDF3A00986498 /* ZKStarshipsDBHelper.swift */; };
+		147511A827DCEB9B00986498 /* ZKPersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147511A227DCDCF100986498 /* ZKPersistenceProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,17 +164,15 @@
 		1475112027DB166700986498 /* StarshipsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				147511A127DCDCDC00986498 /* Persistence */,
-				1475118227DC2A4700986498 /* View */,
-				1475118127DC2A3B00986498 /* ViewModel */,
-				1475116E27DB428500986498 /* Model */,
-				1475115727DB266D00986498 /* Error */,
-				1475115127DB19AF00986498 /* Networking */,
 				1475112127DB166700986498 /* AppDelegate.swift */,
 				1475112327DB166700986498 /* SceneDelegate.swift */,
-				1475112A27DB166800986498 /* Assets.xcassets */,
-				1475112C27DB166800986498 /* LaunchScreen.storyboard */,
-				1475112F27DB166800986498 /* Info.plist */,
+				1475115727DB266D00986498 /* Error */,
+				1475116E27DB428500986498 /* Model */,
+				1475115127DB19AF00986498 /* Networking */,
+				147511A127DCDCDC00986498 /* Persistence */,
+				147511A627DCEA9600986498 /* Resources */,
+				1475118227DC2A4700986498 /* View */,
+				1475118127DC2A3B00986498 /* ViewModel */,
 			);
 			path = StarshipsDemo;
 			sourceTree = "<group>";
@@ -180,11 +180,11 @@
 		1475113727DB166800986498 /* StarshipsDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				1475119E27DC679100986498 /* JSONUtil */,
-				1475118A27DC45DE00986498 /* ViewModelTests */,
-				1475116827DB38DC00986498 /* NetworkingTests */,
 				1475113827DB166800986498 /* StarshipsDemoTests.swift */,
 				1475115B27DB283200986498 /* ZKErrorTests.swift */,
+				1475119E27DC679100986498 /* JSONUtil */,
+				1475116827DB38DC00986498 /* NetworkingTests */,
+				1475118A27DC45DE00986498 /* ViewModelTests */,
 			);
 			path = StarshipsDemoTests;
 			sourceTree = "<group>";
@@ -201,10 +201,10 @@
 		1475115127DB19AF00986498 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				1475116127DB2B9C00986498 /* Response */,
 				1475116027DB2B9000986498 /* Request */,
-				1475115227DB19E200986498 /* ZKNetworkingAPI.swift */,
+				1475116127DB2B9C00986498 /* Response */,
 				1475115D27DB2AB100986498 /* ZKNetworking.swift */,
+				1475115227DB19E200986498 /* ZKNetworkingAPI.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -220,8 +220,8 @@
 		1475116027DB2B9000986498 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				1475116227DB2BB700986498 /* ZKRequestProtocol.swift */,
 				1475116B27DB427000986498 /* ZKGetStarshipsRequest.swift */,
+				1475116227DB2BB700986498 /* ZKRequestProtocol.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -229,8 +229,8 @@
 		1475116127DB2B9C00986498 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				1475116527DB2BC600986498 /* ZKResponseProtocol.swift */,
 				1475117227DB457900986498 /* ZKGetStarshipsResponse.swift */,
+				1475116527DB2BC600986498 /* ZKResponseProtocol.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -265,9 +265,9 @@
 		1475118127DC2A3B00986498 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1475119927DC5CC600986498 /* ZKStarshipDetailViewModel.swift */,
 				1475118327DC2A6E00986498 /* ZKStarshipsViewModel.swift */,
 				1475118827DC3E5400986498 /* ZKStarshipViewModel.swift */,
-				1475119927DC5CC600986498 /* ZKStarshipDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -275,10 +275,10 @@
 		1475118227DC2A4700986498 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1475112527DB166700986498 /* ZKStarshipsViewController.swift */,
 				1475118627DC3B7800986498 /* ZKStarshipCell.swift */,
-				1475119527DC577F00986498 /* ZKStarshipDetailsViewController.swift */,
 				1475119727DC5CAB00986498 /* ZKStarshipDetailCell.swift */,
+				1475119527DC577F00986498 /* ZKStarshipDetailsViewController.swift */,
+				1475112527DB166700986498 /* ZKStarshipsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +318,16 @@
 				147511A427DCDF3A00986498 /* ZKStarshipsDBHelper.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		147511A627DCEA9600986498 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1475112A27DB166800986498 /* Assets.xcassets */,
+				1475112F27DB166800986498 /* Info.plist */,
+				1475112C27DB166800986498 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,12 +495,14 @@
 				1475116A27DB390800986498 /* ZKNetworkingTests.swift in Sources */,
 				1475118D27DC48C300986498 /* ZKStarshipViewModel.swift in Sources */,
 				1475118F27DC4B7700986498 /* ZKStarshipViewModelTests.swift in Sources */,
+				147511A727DCEB8E00986498 /* ZKStarshipsDBHelper.swift in Sources */,
 				1475116727DB2BC600986498 /* ZKResponseProtocol.swift in Sources */,
 				1475119B27DC5CC600986498 /* ZKStarshipDetailViewModel.swift in Sources */,
 				1475118C27DC45FC00986498 /* ZKStarshipsViewModelTests.swift in Sources */,
 				1475117127DB429D00986498 /* ZKStarship.swift in Sources */,
 				1475117427DB457900986498 /* ZKGetStarshipsResponse.swift in Sources */,
 				1475113927DB166800986498 /* StarshipsDemoTests.swift in Sources */,
+				147511A827DCEB9B00986498 /* ZKPersistenceProtocol.swift in Sources */,
 				1475118527DC2A6E00986498 /* ZKStarshipsViewModel.swift in Sources */,
 				1475116427DB2BB700986498 /* ZKRequestProtocol.swift in Sources */,
 				1475115F27DB2AB100986498 /* ZKNetworking.swift in Sources */,
@@ -664,7 +676,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QPG88YU3YB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = StarshipsDemo/Info.plist;
+				INFOPLIST_FILE = StarshipsDemo/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -691,7 +703,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = QPG88YU3YB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = StarshipsDemo/Info.plist;
+				INFOPLIST_FILE = StarshipsDemo/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
