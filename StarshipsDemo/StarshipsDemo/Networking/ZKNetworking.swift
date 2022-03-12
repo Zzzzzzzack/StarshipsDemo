@@ -11,10 +11,10 @@ import Foundation
 protocol ZKNetworkingProtocol {
     /// Send the request using the related RequestType, response data will be converted to the related instance of ResponseType
     /// - Parameters:
-    ///   - queue: The DispatchQueue that used to handling the request and response
+    ///   - queue: The DispatchQueue that used to execute the API call
     ///   - request: The request instance that implemented the ZKRequestProtocol
     ///   - completion: A callback closure that handles the response and error
-    func send<RequestType>(_ queue: DispatchQueue?, request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol
+    func send<RequestType>(_ queue: DispatchQueue, request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol
 }
 
 class ZKNetworking: ZKNetworkingProtocol {
@@ -23,11 +23,16 @@ class ZKNetworking: ZKNetworkingProtocol {
 
 /// Implementation the ZKNetworkingProtocol
 extension ZKNetworking {
-    func send<RequestType>(_ queue: DispatchQueue? = nil, request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol {
+    /// Send the request using the related RequestType, response data will be converted to the related instance of ResponseType
+    /// - Parameters:
+    ///   - queue: The DispatchQueue that used to execute the API call, by default it is global queue
+    ///   - request: The request instance that implemented the ZKRequestProtocol
+    ///   - completion: A callback closure that handles the response and error
+    func send<RequestType>(_ queue: DispatchQueue = DispatchQueue.global(), request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol {
         
         // Validate the URL string
         guard var urlComponents = URLComponents(string: request.api.urlString) else {
-            // If the URL string is invalid call, complete the API call with error
+            // If the URL string is invalid, complete the API call with error
             completion(nil, .invalidURL)
             return
         }
@@ -65,13 +70,11 @@ extension ZKNetworking {
         urlRequest.httpMethod = request.api.method.rawValue
         urlRequest.allHTTPHeaderFields = request.headers
         
-        let queueToExecute = queue ?? DispatchQueue.global()
-        
         // Create the API call task
         let task = URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             if let error = error {
                 // If error is not nil, complete the API call with error
-                queueToExecute.async {
+                queue.async {
                     completion(nil, .custom(message: error.localizedDescription))
                 }
                 return
@@ -79,31 +82,31 @@ extension ZKNetworking {
             
             guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                 // Invalid response data, complete the API call with error
-                queueToExecute.async { completion(nil, .invalidURL) }
+                queue.async { completion(nil, .invalidURL) }
                 return
             }
             
             if urlResponse.statusCode == 400 {
                 // Complete the API call with server error
-                queueToExecute.async {
+                queue.async {
                     completion(nil, .serverError)
                 }
             } else if 200...299 ~= urlResponse.statusCode {
                 do {
                     let response = try JSONDecoder().decode(RequestType.ResponseType.self, from: data)
-                    queueToExecute.async {
+                    queue.async {
                         // Complete the API call with eligible response data
                         completion(response, nil)
                     }
                 } catch let responseError {
                     // Complete the API call with decoding error
-                    queueToExecute.async {
+                    queue.async {
                         completion(nil, .custom(message: responseError.localizedDescription))
                     }
                 }
             } else {
                 // Complete the API call with unknown error
-                queueToExecute.async { completion(nil, .custom(message: "Unknown Error")) }
+                queue.async { completion(nil, .custom(message: "Unknown Error")) }
             }
         }
         

@@ -20,6 +20,41 @@ class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
+    // This get starships list success from server
+    // This test is rely on internet
+    func testGetStarshipsListSuccessFromServer() {
+        let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 1))
+        self.testSendRequest("Test Get Starships List Success From Server") { expectation in
+            // Get starships list from server
+            ZKNetworking.shared.send(request: request) { response, error in
+                XCTAssertNil(error)
+                XCTAssertEqual(response?.data?.next, "https://swapi.dev/api/starships/?page=2")
+                XCTAssertEqual(response?.data?.starships?.isEmpty, false)
+                XCTAssertTrue(response?.data?.starships?.first?.name != nil)
+                expectation.fulfill()
+            }
+        }
+    }
+    
+    // This get starships list failed from server
+    // This test is rely on internet
+    func testGetStarshipsListFailedFromServer() {
+        // Use the ver big page to failed the request
+        let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 9999999))
+        self.testSendRequest("Test Get Starships List Failed From Server") { expectation in
+            // Get starships list from server
+            ZKNetworking.shared.send(request: request) { response, error in
+                XCTAssertNotNil(error)
+                XCTAssertEqual(response?.data?.count, nil)
+                XCTAssertEqual(response?.data?.next, nil)
+                XCTAssertEqual(response?.data?.starships?.count, nil)
+                expectation.fulfill()
+            }
+        }
+    }
+
+    // This get starships list from mock json file
+    // This test is not rely on internet
     func testGetStarshipsListSuccess() {
         let request = ZKGetStarshipsRequest()
         
@@ -35,6 +70,7 @@ class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
         self.testSendRequest("Test Get Starships List Success") { [unowned self] expectation in
             self.send(request: request) { response, error in
                 XCTAssertNil(error)
+                // Check the response data
                 XCTAssertEqual(response?.data?.count, 36)
                 XCTAssertEqual(response?.data?.next, "https://swapi.dev/api/starships/?page=2")
                 XCTAssertEqual(response?.data?.starships?.isEmpty, false)
@@ -83,7 +119,7 @@ class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
     }
 
     // Implement the ZKNetworkingProtocol
-    func send<RequestType>(_ queue: DispatchQueue? = DispatchQueue.global(), request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol {
+    func send<RequestType>(_ queue: DispatchQueue = DispatchQueue.global(), request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol {
         do {
             // Use mock data from JSON file so the test is not rely on network
             let response = try self.loadResponseFromJSONFile(responseFileName, for: request)

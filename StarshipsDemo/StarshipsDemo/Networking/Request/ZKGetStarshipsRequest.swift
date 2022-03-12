@@ -10,7 +10,7 @@ import Foundation
 struct ZKGetStarshipsRequestParams: Encodable {
     // Start from 1
     // If this value equals to nil, means load the first page
-    let page: Int? = nil
+    var page: Int? = nil
 }
 
 struct ZKGetStarshipsRequest: ZKRequestProtocol {
@@ -22,5 +22,5 @@ struct ZKGetStarshipsRequest: ZKRequestProtocol {
     }
     
     // This API can be call without parameters
-    let params: ParamsType? = nil
+    var params: ZKGetStarshipsRequestParams? = nil
 }
