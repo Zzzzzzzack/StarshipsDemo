@@ -18,7 +18,7 @@ class ZKStarshipViewModelTests: XCTestCase {
     }
     
     func testUpdateViewModel() throws {
-        guard let starship1 = try? self.loadStarshipFromJSONFile("Starship1") else {
+        guard let starship1 = try? ZKJSONUtil.shared.loadDataFromJSONFile(ZKStarship.self, fileName: "Starship1") else {
             XCTAssert(true)
             return
         }
@@ -46,7 +46,7 @@ class ZKStarshipViewModelTests: XCTestCase {
         XCTAssertEqual(viewModel.url, "https://swapi.dev/api/starships/2/")
         
         // Test empty properties by starship2
-        guard let starship2 = try? self.loadStarshipFromJSONFile("Starship2") else {
+        guard let starship2 = try? ZKJSONUtil.shared.loadDataFromJSONFile(ZKStarship.self, fileName: "Starship2") else {
             XCTAssert(true)
             return
         }
@@ -66,14 +66,5 @@ class ZKStarshipViewModelTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
-    }
-
-    // Load the mock date from json file
-    private func loadStarshipFromJSONFile(_ fileName: String) throws -> ZKStarship {
-        let path = Bundle(for: type(of:self)).path(forResource: fileName, ofType: "json")
-        let url = URL(fileURLWithPath: path ?? "")
-        let jsonData = try Data(contentsOf: url)
-        let response = try JSONDecoder().decode(ZKStarship.self, from: jsonData)
-        return response
     }
 }

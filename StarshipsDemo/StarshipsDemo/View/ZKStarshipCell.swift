@@ -99,5 +99,9 @@ class ZKStarshipCell: UITableViewCell {
             // Update manufacturer text
             self.manufacturer.text = $0
         }.store(in: &self.subscriptions)
+        
+        self.viewModel.$isFavorite.sink {
+            print("\($0)")
+        }.store(in: &self.subscriptions)
     }
 }

@@ -9,7 +9,9 @@ import Foundation
 import Combine
 
 class ZKStarshipViewModel {
-    private var starship: ZKStarship?
+    var starship: ZKStarship?
+    @Published var displayDetailTypes = ZKStarshipViewModel.DetailType.allCases
+
     @Published var name: String?
     @Published var model: String?
     @Published var manufacturer: String?
@@ -29,7 +31,7 @@ class ZKStarshipViewModel {
     @Published var edited: String?
     @Published var url: String?
     @Published var isFavorite: Bool?
-
+    
     /// Update the view model by starship
     func update(_ starship: ZKStarship) {
         self.starship = starship
@@ -64,5 +66,26 @@ class ZKStarshipViewModel {
         self.edited = starship.edited
         self.url = starship.url
         self.isFavorite = starship.isFavorite
+    }
+}
+
+extension ZKStarshipViewModel {
+    enum DetailType: String, CaseIterable {
+        case model = "Model"
+        case manufacturer = "Manufacturer"
+        case costInCredits = "Cost In Credits"
+        case length = "Length"
+        case maxSpeed = "Max Speed"
+        case crew = "Crew"
+        case passengers = "passengers"
+        case cargoCapacity = "Cargo Capacity"
+        case consumables = "Consumables"
+        case hyperdriveRating = "Hyperdrive Rating"
+        case MGLT
+        case starshipClass = "Starship Class"
+        case pilots = "Pilots"
+        case films = "Films"
+        case created = "Created"
+        case edited = "Edited"
     }
 }

@@ -130,11 +130,7 @@ class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
 
     // Load the mock response date from json file
     private func loadResponseFromJSONFile<Request>(_ fileName: String, for request: Request) throws -> Request.ResponseType? where Request: ZKRequestProtocol {
-        let path = Bundle(for: type(of:self)).path(forResource: fileName, ofType: "json")
-        let url = URL(fileURLWithPath: path ?? "")
-        let jsonData = try Data(contentsOf: url)
-        let response = try JSONDecoder().decode(Request.ResponseType.self, from: jsonData)
-        return response
+        return try ZKJSONUtil.shared.loadDataFromJSONFile(Request.ResponseType.self, fileName: fileName)
     }
     
     // Execute the asynchronous request call in the processing closure

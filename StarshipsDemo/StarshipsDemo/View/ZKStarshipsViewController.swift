@@ -78,4 +78,13 @@ extension ZKStarshipsViewController: UITableViewDelegate {
         // Equals to cell content height
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = self.tableView.cellForRow(at: indexPath) as? ZKStarshipCell
+        let detailsPage = ZKStarshipDetailsViewController()
+        // `isFavorite` can be changed from details page
+        // So use the same view model so the changes can be observed by cell
+        detailsPage.viewModel = cell?.viewModel
+        self.navigationController?.pushViewController(detailsPage, animated: true)
+    }
 }
