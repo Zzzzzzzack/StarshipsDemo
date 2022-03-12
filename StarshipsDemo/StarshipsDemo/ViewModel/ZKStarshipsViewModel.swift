@@ -44,12 +44,12 @@ class ZKStarshipsViewModel {
     /// Toggle favourite for existing starship
     func toggleFavourite(_ starship: ZKStarship?) {
         // Find the existing starship by matched name
-        if let starship = starship, let index = self.starships?.firstIndex(where: {
+        if let starships = self.starships, let starship = starship, let index = starships.firstIndex(where: {
             return $0.name == starship.name
         }) {
-            let existingStarship = self.starships?[index]
+            let existingStarship = starships[index]
             // Toggle the favourite status
-            let isFavourite = !(existingStarship?.isFavourite ?? false)
+            let isFavourite = !existingStarship.isFavourite
             self.starships?[index].isFavourite = isFavourite
             
             // Save the changes into DB
