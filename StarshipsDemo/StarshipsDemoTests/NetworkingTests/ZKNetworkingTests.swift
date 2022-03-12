@@ -85,7 +85,6 @@ class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
                 XCTAssertEqual(firstStarship?.passengers,  "600")
                 XCTAssertEqual(firstStarship?.cargoCapacity,  "3000000")
                 XCTAssertEqual(firstStarship?.consumables,  "1 year")
-                XCTAssertEqual(firstStarship?.consumables,  "1 year")
                 XCTAssertEqual(firstStarship?.hyperdriveRating,  "2.0")
                 XCTAssertEqual(firstStarship?.MGLT,  "60")
                 XCTAssertEqual(firstStarship?.starshipClass,  "corvette")
