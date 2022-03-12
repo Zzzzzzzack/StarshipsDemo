@@ -51,6 +51,7 @@ class ZKStarshipsViewModelTests: XCTestCase {
             
             firstStarship?.isFavourite = true
             viewModel.toggleFavourite(firstStarship)
+            XCTAssertEqual(viewModel.starships?.first?.isFavourite, true)
             viewModel.toggleFavourite(nil)
 
             expectation.fulfill()

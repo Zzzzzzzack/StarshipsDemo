@@ -73,7 +73,7 @@ class ZKStarshipViewModel {
     func toggleFavourite() {
         if let isFavourite = self.isFavourite {
             self.isFavourite = !isFavourite
-            self.starship?.isFavourite = isFavourite
+            self.starship?.isFavourite = !isFavourite
         } else {
             self.isFavourite = true
             self.starship?.isFavourite = true
