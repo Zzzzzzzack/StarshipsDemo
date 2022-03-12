@@ -51,6 +51,8 @@
 		1475119B27DC5CC600986498 /* ZKStarshipDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475119927DC5CC600986498 /* ZKStarshipDetailViewModel.swift */; };
 		1475119D27DC66EC00986498 /* ZKStarshipDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475119C27DC66EC00986498 /* ZKStarshipDetailViewModelTests.swift */; };
 		147511A027DC67AE00986498 /* ZKJSONUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1475119F27DC67AE00986498 /* ZKJSONUtil.swift */; };
+		147511A327DCDCF100986498 /* ZKPersistenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147511A227DCDCF100986498 /* ZKPersistenceProtocol.swift */; };
+		147511A527DCDF3A00986498 /* ZKStarshipsDBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147511A427DCDF3A00986498 /* ZKStarshipsDBHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +110,8 @@
 		1475119927DC5CC600986498 /* ZKStarshipDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKStarshipDetailViewModel.swift; sourceTree = "<group>"; };
 		1475119C27DC66EC00986498 /* ZKStarshipDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKStarshipDetailViewModelTests.swift; sourceTree = "<group>"; };
 		1475119F27DC67AE00986498 /* ZKJSONUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKJSONUtil.swift; sourceTree = "<group>"; };
+		147511A227DCDCF100986498 /* ZKPersistenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKPersistenceProtocol.swift; sourceTree = "<group>"; };
+		147511A427DCDF3A00986498 /* ZKStarshipsDBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKStarshipsDBHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 		1475112027DB166700986498 /* StarshipsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				147511A127DCDCDC00986498 /* Persistence */,
 				1475118227DC2A4700986498 /* View */,
 				1475118127DC2A3B00986498 /* ViewModel */,
 				1475116E27DB428500986498 /* Model */,
@@ -304,6 +309,15 @@
 				1475119F27DC67AE00986498 /* ZKJSONUtil.swift */,
 			);
 			path = JSONUtil;
+			sourceTree = "<group>";
+		};
+		147511A127DCDCDC00986498 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				147511A227DCDCF100986498 /* ZKPersistenceProtocol.swift */,
+				147511A427DCDF3A00986498 /* ZKStarshipsDBHelper.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,7 +469,9 @@
 				1475118427DC2A6E00986498 /* ZKStarshipsViewModel.swift in Sources */,
 				1475119827DC5CAB00986498 /* ZKStarshipDetailCell.swift in Sources */,
 				1475115E27DB2AB100986498 /* ZKNetworking.swift in Sources */,
+				147511A327DCDCF100986498 /* ZKPersistenceProtocol.swift in Sources */,
 				1475112227DB166700986498 /* AppDelegate.swift in Sources */,
+				147511A527DCDF3A00986498 /* ZKStarshipsDBHelper.swift in Sources */,
 				1475112427DB166700986498 /* SceneDelegate.swift in Sources */,
 				1475115327DB19E200986498 /* ZKNetworkingAPI.swift in Sources */,
 			);

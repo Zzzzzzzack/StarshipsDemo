@@ -33,6 +33,11 @@ class ZKStarshipsViewModel {
             self.starships = $0?.data?.starships
             self.reloadData = true
             self.errorMessage = $1?.errorDescription
+            
+            if let starships = self.starships {
+                // Save the list to DB
+                ZKStarshipsDBHelper.shared.batchSaveOrUpdate(starships)
+            }
         }
     }
     
@@ -46,6 +51,11 @@ class ZKStarshipsViewModel {
             // Toggle the favourite status
             let isFavourite = !(existingStarship?.isFavourite ?? false)
             self.starships?[index].isFavourite = isFavourite
+            
+            // Save the changes into DB
+            if let updatingStarships = self.starships?[index] {
+                ZKStarshipsDBHelper.shared.saveOrUpdate(updatingStarships)
+            }
         }
     }
 }
