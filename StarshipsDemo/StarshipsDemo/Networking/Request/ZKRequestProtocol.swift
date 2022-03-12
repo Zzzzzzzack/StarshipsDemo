@@ -22,8 +22,6 @@ protocol ZKRequestProtocol {
     var headers: [String: String] { get }
     // Request parameters
     var params: ParamsType? { get }
-    // Request body, encoded by `params`
-    var body: Data? { get }
 }
 
 // Default implementations
@@ -36,13 +34,5 @@ extension ZKRequestProtocol {
     // Set up the default headers
     var headers: [String: String] {
         return ["content-type": "application/json"]
-    }
-    
-    // Convert the parameters to json data
-    var body: Data? {
-        guard let params = self.params else {
-            return nil
-        }
-        return try? JSONEncoder().encode(params)
     }
 }
