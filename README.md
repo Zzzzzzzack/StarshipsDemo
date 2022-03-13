@@ -452,8 +452,8 @@ In this demo, I've already written some functions to support future use.
 The paging business logic is very easy to implement in the current structure, the only thing we need to do is to create a request instance using different page number:  
 
 ```swift
-// Change the `page` to support paging
-let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 1))
+// Change the `page` to load a different page of data
+let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 2))
 ```
 #### Sort the starships
 To support sorting the starships, we will need a small change on the Request model, now we have one parameter "page", I assume that the API will support another parameter "sort", so the only thing we need to do is to add a new property "sort" into parameters:
