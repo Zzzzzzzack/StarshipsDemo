@@ -343,14 +343,14 @@ class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
         return try ZKJSONUtil.shared.loadDataFromJSONFile(Request.ResponseType.self, fileName: fileName)
     }
 	
-	// Execute the asynchronous request call in the processing closure
+    // Execute the asynchronous request call in the processing closure
     private func testSendRequest(_ name: String, processing: (_ expectation: XCTestExpectation) -> ()) {
         let expectation = self.expectation(description: name)
         processing(expectation)
         self.waitForExpectations(timeout: 10.0, handler: nil)
     }
 	
-	// This get starships list from mock json file
+    // This get starships list from mock json file
     // This test is not rely on internet
     func testGetStarshipsListSuccess() {
         let request = ZKGetStarshipsRequest()
@@ -465,7 +465,7 @@ struct ZKGetStarshipsRequestParams: Encodable {
     var sort: ZKGetStarshipsRequestParams.SortType? = nil
 		
     /// Sort type of starships
-    enum SortType: String {
+    enum SortType: Int {
     	case name = 1
 	case length
 	case speed
