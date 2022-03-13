@@ -443,14 +443,14 @@ But it very important too!!!
 As developer, we should condider the future requirements and use cases as much as we can, and make our sturecture easier to implemented and extended
 
 In this demo, I already implemented cuple of functions to support future use
-- Paging on the starship list
+#### Paging on the starship list:
 The paging busniess logic is very easy to implement in the current structure, the only thind we need to do is create a request instance using different page number:
 
 ```swift
 // Change the `page` to support paging
 let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 1))
 ```
-- Sort the starships
+#### Sort the starships
 The support sorting the starships, we will need a small change on the Request model, now we only have one parameter "page", I assume that the API will support another parameter "sort", so the only thing we need to do is add a new property "sort" into ZKGetStarshipsRequestParams:
 ```swift
 struct ZKGetStarshipsRequestParams: Encodable {
@@ -468,7 +468,7 @@ struct ZKGetStarshipsRequestParams: Encodable {
 	}
 }
 ```
-- Persistence
+#### Persistence
 Now the demo doesn't save the starship into local persistence, and the favourite status will be cleared after the app relaunched.
 To support persistence, we need to impletment the ZKPersistenceProtocol
 ```swift
