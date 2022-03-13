@@ -7,7 +7,7 @@
 
 ------------
 
-###UI/UX
+### UI/UX
 - The starships list page display the collection of starships with brief information. 
 - Use can scroll up and down the starships list.
 - When user click on the "Star" icon on the list, the related starship will be marked as favourite or unfavourite.
@@ -22,11 +22,11 @@ Users can “favourite” starships from both screens by click on the “star”
 
 ------------
 
-###UIKit + MVVM + Combine
-####UIkit
+### UIKit + MVVM + Combine
+#### UIkit
 The UIKit user interface are built by programmatically. So the Views are easy to control, reusable, and conflits free. It also speed up the xcode complie performance.
 
-#####Example:
+##### Example:
 Define the subview as a lazy var, so we can break the UI logic into small pisces
 ```swift
     lazy var tableView: UITableView = {
@@ -55,16 +55,16 @@ then the setup logic has less code, and more easy to read
         ])
     }
 ```
-####MVVM
+#### MVVM
 This demo is built in MVVM design pattern
 - Models: hold application data. They’re usually structs or simple classes.
 - Views: display visual elements and controls on the screen. 
 - View Models: transform model information into values that can be displayed on a view.
 
-####Combine
+#### Combine
 By using Apple Official framwork "Combine", We can make the MVVM in a reactive way. 
 
-#####Example:
+##### Example:
 - First of all, import the Combine framwork from View and View Model
 ```swift
 import Combine
@@ -93,10 +93,10 @@ private var subscriptions = Set<AnyCancellable>()
             }.store(in: &self.subscriptions)
 ```
 
-####Protocol-oriented Programming
+#### Protocol-oriented Programming
 This demo is protocol-oriented, so it's easy to maintain, extend and test.
 
-#####Networking Related Protocols
+##### Networking Related Protocols
 
 - ZKNetworkingAPIProtocol
 A type that can be used to get the API's url string and its related http method
@@ -169,7 +169,7 @@ protocol ZKNetworkingProtocol {
     func send<RequestType>(_ queue: DispatchQueue, request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol
 }
 ```
-######Example:
+###### Example:
 ```swift
 class ZKNetworking: ZKNetworkingProtocol {
     static let shared = ZKNetworking()
@@ -314,12 +314,12 @@ ZKNetworking.shared.send(DispatchQueue.global(), request: request) { [unowned se
     self.errorMessage = $1?.errorDescription 
 }
 ```
-######Related Tests
+###### Related Tests
 As we might not like to do the networking rely on internet, then protocols are very useful for offline unit testing.
 
 To do the offline testing, just impelment an another Networking handler from ZKNetworkingProtocol, use it to load the response data from local json files
 
-######Example
+###### Example
 ```swift
 class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
     // Implement the ZKNetworkingProtocol
@@ -403,7 +403,7 @@ class ZKJSONUtil {
     }
 ```
 
-#####Persistence Related Protocol
+##### Persistence Related Protocol
 This demo also considered the Persistence structure for future use
 
 - ZKPersistenceProtocol
@@ -434,7 +434,7 @@ protocol ZKPersistenceProtocol {
 }
 ```
 
-####Future Implementation
+#### Future Implementation
 ALLLLLLRIGHT!!! this is the last chapter of this READ ME DOCUMENT!! 
 But it very important!!!
 As developer, we need to condider the future requirements and use cases as much as we can, then we can make our sturecture easier to implement and extend
@@ -527,4 +527,6 @@ Then we can use it on ViewModel:
     }
 ```
 
-Thanks you!
+------------
+
+#Thanks you!
