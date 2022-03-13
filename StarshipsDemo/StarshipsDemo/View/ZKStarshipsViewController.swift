@@ -27,6 +27,9 @@ class ZKStarshipsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        self.combineWithViewModel()
+        // Trigger view model to get the starship
+        self.viewModel.getStarships()
     }
     
     func setup() {
@@ -40,7 +43,10 @@ class ZKStarshipsViewController: UIViewController {
             self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor)
         ])
-        
+    }
+    
+    // Combine the UI with view model
+    func combineWithViewModel() {
         // Bind the starships so table view will reload once the starships been updated
         self.viewModel.$reloadData
             .receive(on: DispatchQueue.main)
@@ -58,11 +64,8 @@ class ZKStarshipsViewController: UIViewController {
                 }
                 self.popupErrorMessage(message)
             }.store(in: &self.subscriptions)
-        
-        // Trigger view model to get the starship
-        self.viewModel.getStarships()
     }
-    
+        
     // Pop up an alert to display the error message
     func popupErrorMessage(_ message: String) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)

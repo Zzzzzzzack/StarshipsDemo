@@ -42,6 +42,7 @@ class ZKStarshipDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
+        self.combineWithViewModel()
     }
     
     func setup() {
@@ -56,8 +57,10 @@ class ZKStarshipDetailsViewController: UIViewController {
         ])
         
         self.navigationItem.rightBarButtonItem = self.favouriteBarItem
-        
-        // Bind all the related properties with UI
+    }
+    
+    // Combine the UI with view model
+    func combineWithViewModel() {
         self.viewModel?.$name.sink { [unowned self] in
             // Reload once the starships been updated
             self.title = $0

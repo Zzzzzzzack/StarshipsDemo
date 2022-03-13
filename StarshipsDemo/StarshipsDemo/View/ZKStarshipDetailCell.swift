@@ -58,6 +58,7 @@ class ZKStarshipDetailCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.setup()
+        self.combineWithViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -76,8 +77,10 @@ class ZKStarshipDetailCell: UITableViewCell {
             self.hStack.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
             self.hStack.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
         ])
-        
-        // Bind all the related properties with UI
+    }
+    
+    // Combine the UI with view model
+    func combineWithViewModel() {
         self.viewModel.$title.sink { [unowned self] in
             // Update title text
             self.title.text = $0
