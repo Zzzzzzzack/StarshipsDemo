@@ -1,5 +1,28 @@
 # Starships Demo
 
+### [Features](https://github.com/Zzzzzzzack/StarshipsDemo/blob/main/README.md#features "Features")
+### [UI/UX](https://github.com/Zzzzzzzack/StarshipsDemo#uiux "UI/UX")
+### [UIKit + MVVM + Combine](https://github.com/Zzzzzzzack/StarshipsDemo#uikit--mvvm--combine "UIKit + MVVM + Combine")
+- #### [UIKit](https://github.com/Zzzzzzzack/StarshipsDemo#uikit "UIKit")
+ - #### [Example](https://github.com/Zzzzzzzack/StarshipsDemo#example "Example")
+- #### [MVVM](https://github.com/Zzzzzzzack/StarshipsDemo#mvvm "MVVM")
+- #### [Combine](https://github.com/Zzzzzzzack/StarshipsDemo#combine "UIKit")
+ - #### [Example](https://github.com/Zzzzzzzack/StarshipsDemo#example-1 "Example")
+
+### [Protocol-oriented Programming](https://github.com/Zzzzzzzack/StarshipsDemo#protocol-oriented-programming "Protocol-oriented Programming")
+- #### [Networking Related Protocols](https://github.com/Zzzzzzzack/StarshipsDemo#networking-related-protocols "Networking Related Protocols")
+ - #### [Example](https://github.com/Zzzzzzzack/StarshipsDemo#example-2 "Example")
+ - #### [Related Tests](https://github.com/Zzzzzzzack/StarshipsDemo#related-tests "Related Tests")
+   - #### [Example]( https://github.com/Zzzzzzzack/StarshipsDemo#example-3 "Example")
+- #### [Persistence Related Protocol](https://github.com/Zzzzzzzack/StarshipsDemo#persistence-related-protocol "Persistence Related Protocol")
+
+### [Future Implementation](https://github.com/Zzzzzzzack/StarshipsDemo#future-implementation "Future Implementation")
+- #### [Paging on the starship list](https://github.com/Zzzzzzzack/StarshipsDemo#paging-on-the-starship-list "Paging on the starship list")
+- #### [Sort the starships](https://github.com/Zzzzzzzack/StarshipsDemo#paging-on-the-starship-list "Sort the starships")
+- #### [Persistence](https://github.com/Zzzzzzzack/StarshipsDemo#persistence "Persistence")
+
+------------
+
 ### Features
 - Display the collection of starships.
 - Allow the user to click on a starship to view more details about it.
@@ -443,7 +466,7 @@ But it very important too!!!
 As developer, we should condider the future requirements and use cases as much as we can, and make our sturecture easier to implemented and extended
 
 In this demo, I already implemented cuple of functions to support future use
-#### Paging on the starship list:
+#### Paging on the starship list
 The paging busniess logic is very easy to implement in the current structure, the only thind we need to do is create a request instance using different page number:
 
 ```swift
