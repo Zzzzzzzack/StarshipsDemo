@@ -1,19 +1,5 @@
 # Starships Demo
 
-### [Protocol-oriented Programming](https://github.com/Zzzzzzzack/StarshipsDemo#protocol-oriented-programming "Protocol-oriented Programming")
-- #### [Networking Related Protocols](https://github.com/Zzzzzzzack/StarshipsDemo#networking-related-protocols "Networking Related Protocols")
- - #### [Example](https://github.com/Zzzzzzzack/StarshipsDemo#example-2 "Example")
- - #### [Related Tests](https://github.com/Zzzzzzzack/StarshipsDemo#related-tests "Related Tests")
-   - #### [Example]( https://github.com/Zzzzzzzack/StarshipsDemo#example-3 "Example")
-- #### [Persistence Related Protocol](https://github.com/Zzzzzzzack/StarshipsDemo#persistence-related-protocol "Persistence Related Protocol")
-
-### [Future Implementation](https://github.com/Zzzzzzzack/StarshipsDemo#future-implementation "Future Implementation")
-- #### [Paging on the starship list](https://github.com/Zzzzzzzack/StarshipsDemo#paging-on-the-starship-list "Paging on the starship list")
-- #### [Sort the starships](https://github.com/Zzzzzzzack/StarshipsDemo#paging-on-the-starship-list "Sort the starships")
-- #### [Persistence](https://github.com/Zzzzzzzack/StarshipsDemo#persistence "Persistence")
-
-------------
-
 ### Features
 - Display the collection of starships.
 - Allow the user to click on a starship to view more details about it.
