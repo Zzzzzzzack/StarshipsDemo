@@ -537,4 +537,4 @@ Then we can use it on ViewModel:
 
 ------------
 
-# Thanks you!
+# Thank you!
