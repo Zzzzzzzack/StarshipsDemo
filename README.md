@@ -1,14 +1,5 @@
 # Starships Demo
 
-### [Features](https://github.com/Zzzzzzzack/StarshipsDemo/blob/main/README.md#features "Features")
-### [UI/UX](https://github.com/Zzzzzzzack/StarshipsDemo#uiux "UI/UX")
-### [UIKit + MVVM + Combine](https://github.com/Zzzzzzzack/StarshipsDemo#uikit--mvvm--combine "UIKit + MVVM + Combine")
-- #### [UIKit](https://github.com/Zzzzzzzack/StarshipsDemo#uikit "UIKit")
- - #### [Example](https://github.com/Zzzzzzzack/StarshipsDemo#example "Example")
-- #### [MVVM](https://github.com/Zzzzzzzack/StarshipsDemo#mvvm "MVVM")
-- #### [Combine](https://github.com/Zzzzzzzack/StarshipsDemo#combine "UIKit")
- - #### [Example](https://github.com/Zzzzzzzack/StarshipsDemo#example-1 "Example")
-
 ### [Protocol-oriented Programming](https://github.com/Zzzzzzzack/StarshipsDemo#protocol-oriented-programming "Protocol-oriented Programming")
 - #### [Networking Related Protocols](https://github.com/Zzzzzzzack/StarshipsDemo#networking-related-protocols "Networking Related Protocols")
  - #### [Example](https://github.com/Zzzzzzzack/StarshipsDemo#example-2 "Example")
