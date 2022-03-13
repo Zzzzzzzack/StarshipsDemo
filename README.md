@@ -2,19 +2,19 @@
 
 ### Features
 - Display the collection of starships.
-- Allow the user to click on a starship to view more details about it.
+- Allow the user to click on a starship to view more details.
 - Users can “favourite” starships from both screens by click on the "star" icon.
 
 ------------
 
 ### UI/UX
 - The starships list page displays the collection of starships with brief information. 
-- User can scroll up and down the starships list.
-- When user click on the "Star" icon on the list, the related starship will be marked as favourite or unfavourite.
-- User can view more details by click on the starship.
-- On the details page, user can also marked the starship as favourite or unfavourite by clicked on the "Star" icon on the top right side.
-- User can go back to the starships list from details page by click on the "<" button on the top left side
-- If user changed the favourite status from details page, the favourite status on starships list page will be updated also.
+- User can scroll up or down the starships list.
+- When user clicks on the "star" icon on the list, the related starship will be marked as favourite or unfavourite.
+- User can view more details by clicking on the starship.
+- On the details page, user can also mark the starship as favourite or unfavourite by clicking on the "star" icon on the top right side.
+- User can go back to the starships list from details page by clicking on the "<" button on the top left side
+- If user changes the favourite status from details page, the favourite status on starships list page will get updated accordingly.
 
 ![UI/UX](https://user-images.githubusercontent.com/16681331/158039852-391eec07-6c94-4113-aafb-bd5bac304352.gif "UI/UX")
 
@@ -23,7 +23,7 @@
 
 ### UIKit + MVVM + Combine
 #### UIkit
-The UIKit user interface are built programmatically. So the Views are easy to control, reusable, and conflits free. It also speed up the complie performance on xcode and CI.
+The UIKit user interface is built programmatically. So the Views are easy to control, reuse, and free of conflict. It also speeds up the complie performance on xcode and CI.
 
 ##### Example:
 - Define the subview as a lazy var, to break the UI logic into small pisces:
@@ -63,22 +63,22 @@ This demo is built in MVVM design pattern
 ![MVVM](https://user-images.githubusercontent.com/16681331/158043996-41dfb31b-a43d-4e91-837b-8222ac514752.png "MVVM")
 
 #### Combine
-By using Apple's Official Framwork "Combine", we can make the MVVM in a reactive way. 
+By using Apple's Official Framwork "Combine", MVVM is built in a reactive way. 
 
 ##### Example:
-- First of all, import the Combine framwork from View and View Model
+- First of all, imports the Combine framwork from View and View Model.
 ```swift
 import Combine
 ```
-- Secondly, mark the outputs @Published in View Model
+- Secondly, marks the outputs @Published in View Model.
 ```swift
 @Published var errorMessage: String?
 ```
-- Third, define the subscriptions in View, so we don't need to cancel the the subscriptions by ourselves, Combine Framwork will handle it automatically
+- Thirdly, defines the subscriptions in View, hence there is no need to cancel the the subscriptions by ourselves, Combine Framwork will handle it automatically.
 ```swift
 private var subscriptions = Set<AnyCancellable>()
 ```
-- At the end, combind the View with ViewModel, so the view will be notified the updates
+- Finally, combines the View with ViewModel, by doing so, the views will be notified if there is any changes occur. 
 ```swift
         viewModel.$errorMessage
 			// The UI updates should be executed on main thread
@@ -100,6 +100,7 @@ This demo is protocol-oriented, so it's easy to maintain, extend and test.
 #### Networking Related Protocols
 
 - ZKNetworkingAPIProtocol
+
 A type that can be used to get the API's url string and its related http method
 
 ```swift
@@ -319,9 +320,9 @@ ZKNetworking.shared.send(DispatchQueue.global(), request: request) { [unowned se
 }
 ```
 ##### Related Tests
-The protocols are very useful for offline unit testing, as we may not want the networking tests rely on internet, 
+The protocols are very useful for offline unit testing, as the networking tests do not need to rely on internet access. 
 
-To do the offline testing, just impelment an another Networking handler from ZKNetworkingProtocol, use it to load the response data from local json files
+To do the offline testing, implement another Networking handler from ZKNetworkingProtocol, use it to load the response data from local json files
 
 ##### Example
 ```swift
@@ -392,7 +393,7 @@ class ZKJSONUtil {
 }
 
 ```
-- By create different JSON files, You can also test the failure scenarios!!
+- By create different JSON files, one can also test the failure scenarios:
 ```swift
     func testGetStarshipsListError() {
         let request = ZKGetStarshipsRequest()
@@ -408,12 +409,12 @@ class ZKJSONUtil {
 ```
 
 #### Persistence Related Protocol
-This demo also considered the Persistence structure for future use
+This demo also considers the Persistence structure for future use:
 
 - ZKPersistenceProtocol
 
 This protocol defines all the persistence related methods: save, update, delete and fetch.
-It has an associated type, so each of the implementations should only handles one data type.
+It has an associated type, so each of the implementations should only handle one data type.
 
 ```swift
 /// A type to handle the persistence for specific data type
@@ -442,21 +443,21 @@ protocol ZKPersistenceProtocol {
 ### Future Implementation
 ALLLLLLRIGHT!!! This is the last chapter of this READ ME DOCUMENT!! 
 
-And it very important too!!!
+And it's very important too!!!
 
-As a developer, we should consider the future requirements and use cases as much as we can, to make our sturecture easier to implemented and extended
+As a developer, we should consider the future requirements and use cases as much as we can, to make our sturecture easier to implement and extend.
 
-In this demo, I've already written some functions to support future use
+In this demo, I've already written some functions to support future use.
 #### Paging on the starship list
-The paging busniess logic is very easy to implement in the current structure, the only thing we need to do is create a request instance using different page number:
+The paging business logic is very easy to implement in the current structure, the only thing we need to do is to create a request instance using different page number:  
 
 ```swift
 // Change the `page` to support paging
 let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 1))
 ```
 #### Sort the starships
-To support sorting the starships, we will need a small change on the Request model, now we have one parameter "page", I assume that the API will support another parameter "sort", so the only thing we need to do is add a new property "sort" into ZKGetStarshipsRequestParams:
-```swift
+To support sorting the starships, we will need a small change on the Request model, now we have one parameter "page", I assume that the API will support another parameter "sort", so the only thing we need to do is to add a new property "sort" into parameters:
+```swift 
 struct ZKGetStarshipsRequestParams: Encodable {
     // Start from 1
     // If this value equals to nil, means load the first page
@@ -473,7 +474,7 @@ struct ZKGetStarshipsRequestParams: Encodable {
 }
 ```
 #### Persistence
-Now the demo doesn't save the starships into local persistence, and the favourite status will be cleared after the app relaunched.
+Now the demo hasn't been saved the starships on local persistence, and the favourite status will be cleared after the app relaunched.
 To support persistence, we need to impletment the ZKPersistenceProtocol
 ```swift
 class ZKStarshipsDBHelper: ZKPersistenceProtocol {
