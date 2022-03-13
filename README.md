@@ -16,7 +16,6 @@
 - User can go back to the starships list by click on the "<" button on the top left side
 - User change the favourite status from details page, the favourite status on starships list page will also updated
 
-Users can “favourite” starships from both screens by click on the “star” icon.
 ![UI/UX](https://user-images.githubusercontent.com/16681331/158039852-391eec07-6c94-4113-aafb-bd5bac304352.gif "UI/UX")
 
 
@@ -529,4 +528,4 @@ Then we can use it on ViewModel:
 
 ------------
 
-#Thanks you!
+# Thanks you!
