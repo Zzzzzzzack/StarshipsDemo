@@ -114,6 +114,7 @@ protocol ZKNetworkingAPIProtocol {
 ```
 
 - ZKRequestProtocol
+
 A type of data can be sent through API call, it has two associated types, ParamsType and ResponseType. 
 
 ParamsType should be Ecodable, so it can be encoded to json data by Networking handler. 
@@ -140,6 +141,7 @@ protocol ZKRequestProtocol {
 ```
 
 - ZKResponseProtocol
+
 A type of data can be decoded to a exact data type, it has a associated type ResponseDataType. 
 
 ResponseDataType should be decoable, so the response data can be decoded to the exact response data type.
@@ -156,6 +158,7 @@ protocol ZKResponseProtocol: Decodable {
 ```
 
 - ZKNetworkingProtocol
+
 This type is used to send request and hadle the response data.
 By implement the ZKRequestProtocol, ZKResponseProtocol and ZKNetworkingProtocol, we can call the API and get the exact response easily.
 
@@ -408,6 +411,7 @@ class ZKJSONUtil {
 This demo also considered the Persistence structure for future use
 
 - ZKPersistenceProtocol
+
 This protocol defines all the persistence related methods: save, update, delete and fetch.
 It has an associated type, so each of the implementations should only handles one data type.
 
@@ -438,38 +442,38 @@ protocol ZKPersistenceProtocol {
 ### Future Implementation
 ALLLLLLRIGHT!!! This is the last chapter of this READ ME DOCUMENT!! 
 
-But it very important too!!!
+And it very important too!!!
 
-As developer, we should condider the future requirements and use cases as much as we can, and make our sturecture easier to implemented and extended
+As a developer, we should consider the future requirements and use cases as much as we can, to make our sturecture easier to implemented and extended
 
-In this demo, I already implemented cuple of functions to support future use
+In this demo, I've already written some functions to support future use
 #### Paging on the starship list
-The paging busniess logic is very easy to implement in the current structure, the only thind we need to do is create a request instance using different page number:
+The paging busniess logic is very easy to implement in the current structure, the only thing we need to do is create a request instance using different page number:
 
 ```swift
 // Change the `page` to support paging
 let request = ZKGetStarshipsRequest(params: ZKGetStarshipsRequestParams(page: 1))
 ```
 #### Sort the starships
-The support sorting the starships, we will need a small change on the Request model, now we only have one parameter "page", I assume that the API will support another parameter "sort", so the only thing we need to do is add a new property "sort" into ZKGetStarshipsRequestParams:
+To support sorting the starships, we will need a small change on the Request model, now we have one parameter "page", I assume that the API will support another parameter "sort", so the only thing we need to do is add a new property "sort" into ZKGetStarshipsRequestParams:
 ```swift
 struct ZKGetStarshipsRequestParams: Encodable {
     // Start from 1
     // If this value equals to nil, means load the first page
     var page: Int? = nil
-	var sort: ZKGetStarshipsRequestParams.SortType? = nil
+    var sort: ZKGetStarshipsRequestParams.SortType? = nil
 		
-	/// Sort type of starships
-	enum SortType: String {
+    /// Sort type of starships
+    enum SortType: String {
     	case name = 1
-		case length
-		case speed
-		case created
-	}
+	case length
+	case speed
+	case created
+    }
 }
 ```
 #### Persistence
-Now the demo doesn't save the starship into local persistence, and the favourite status will be cleared after the app relaunched.
+Now the demo doesn't save the starships into local persistence, and the favourite status will be cleared after the app relaunched.
 To support persistence, we need to impletment the ZKPersistenceProtocol
 ```swift
 class ZKStarshipsDBHelper: ZKPersistenceProtocol {
