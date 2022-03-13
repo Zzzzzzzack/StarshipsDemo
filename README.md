@@ -81,16 +81,16 @@ private var subscriptions = Set<AnyCancellable>()
 - Finally, combines the View with ViewModel, by doing so, the views will be notified if there is any changes occur. 
 ```swift
         viewModel.$errorMessage
-			// The UI updates should be executed on main thread
+	    // The UI updates should be executed on main thread
             .receive(on: DispatchQueue.main)
-			// Every time the errorMessage been updated, the sink closure will be called
+	    // Every time the errorMessage been updated, the sink closure will be called
             .sink { [unowned self] errorMessage in
                 guard let errorMessage = errorMessage, !errorMessage.isEmpty else {
                     return
                 }
-				// Show up the error message
+		// Show up the error message
                 self.popupErrorMessage(errorMessage)
-				// Let the Combine framwork to handle the subscription and cancelling
+	    // Let the Combine framwork to handle the subscription and cancelling
             }.store(in: &self.subscriptions)
 ```
 
