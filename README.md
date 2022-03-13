@@ -94,10 +94,10 @@ private var subscriptions = Set<AnyCancellable>()
             }.store(in: &self.subscriptions)
 ```
 
-#### Protocol-oriented Programming
+### Protocol-oriented Programming
 This demo is protocol-oriented, so it's easy to maintain, extend and test.
 
-##### Networking Related Protocols
+#### Networking Related Protocols
 
 - ZKNetworkingAPIProtocol
 A type that can be used to get the API's url string and its related http method
@@ -170,7 +170,7 @@ protocol ZKNetworkingProtocol {
     func send<RequestType>(_ queue: DispatchQueue, request: RequestType, completion: @escaping (RequestType.ResponseType?, ZKNetworkingError?) -> Void) where RequestType : ZKRequestProtocol
 }
 ```
-###### Example:
+##### Example:
 ```swift
 class ZKNetworking: ZKNetworkingProtocol {
     static let shared = ZKNetworking()
@@ -315,12 +315,12 @@ ZKNetworking.shared.send(DispatchQueue.global(), request: request) { [unowned se
     self.errorMessage = $1?.errorDescription 
 }
 ```
-###### Related Tests
+##### Related Tests
 The protocols are very useful for offline unit testing, as we may not want the networking tests rely on internet, 
 
 To do the offline testing, just impelment an another Networking handler from ZKNetworkingProtocol, use it to load the response data from local json files
 
-###### Example
+##### Example
 ```swift
 class ZKNetworkingTests: XCTestCase, ZKNetworkingProtocol {
     // Implement the ZKNetworkingProtocol
@@ -404,7 +404,7 @@ class ZKJSONUtil {
     }
 ```
 
-##### Persistence Related Protocol
+#### Persistence Related Protocol
 This demo also considered the Persistence structure for future use
 
 - ZKPersistenceProtocol
@@ -435,7 +435,7 @@ protocol ZKPersistenceProtocol {
 }
 ```
 
-#### Future Implementation
+### Future Implementation
 ALLLLLLRIGHT!!! This is the last chapter of this READ ME DOCUMENT!! 
 
 But it very important too!!!
