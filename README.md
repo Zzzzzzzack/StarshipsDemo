@@ -445,7 +445,7 @@ ALLLLLLRIGHT!!! This is the last chapter of this READ ME DOCUMENT!!
 
 And it's very important too!!!
 
-As a developer, we should consider the future requirements and use cases as much as we can, to make our sturecture easier to implement and extend.
+As a developer, we should consider the future requirements and use cases as much as we can, to make our sturcture easier to implement and extend.
 
 In this demo, I've already written some functions to support future use.
 #### Paging on the starship list
